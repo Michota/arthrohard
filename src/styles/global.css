@@ -1,22 +1,13 @@
+:root {
+  --bgcolor: #f6f6f6;
+  --fontcolor: #111111;
+}
+
 /* Fonts */
 
 @font-face {
-  font-family: "futurabold";
-  src: url("futura_bold_font-webfont.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "Futura";
-  src: url("futura_medium_bt-webfont.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "futuramedium_italic";
-  src: url("futura_medium_italic_font-webfont.woff2") format("woff2");
+  src: url("/src/fonts/futura_medium_bt-webfont.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
@@ -30,8 +21,8 @@ html {
 
 body {
   font-size: 1.6rem;
-  background-color: black;
-  color: white;
+  background-color: var(--bgcolor);
+  color: var(--fontcolor);
 }
 
 *,
