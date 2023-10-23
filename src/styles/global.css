@@ -1,11 +1,3 @@
-:root {
-  --bgcolor: #f6f6f6;
-  --fontcolor: #111111;
-  --theme-red: #ad4844;
-  --theme-green: #30ab4c;
-  --theme-gray: #d9d9d9;
-}
-
 /* Fonts */
 
 @font-face {
@@ -15,6 +7,15 @@
     url("/src/fonts/FuturaPT-Medium.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+}
+
+/* Custom variables */
+:root {
+  --bgcolor: #f6f6f6;
+  --fontcolor: #111111;
+  --theme-red: #ad4844;
+  --theme-green: #30ab4c;
+  --theme-gray: #d9d9d9;
 }
 
 /* Global Reset */
@@ -68,21 +69,35 @@ a {
   color: inherit;
 }
 
-/* ===== Actual styling below =====  */
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* ========== Actual styling below ==========  */
+
+/* === Global styles === */
+
+::selection {
+  background-color: var(--theme-red);
+  color: var(--fontcolor);
+}
+
+/* === Element styles === */
+
+/* Header */
 
 header {
-  /* display: grid;
-  align-items: center;
-  grid-template-columns: max-content 1fr; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10rem;
   width: 100%;
   height: 12.2rem;
   padding: 0 3.6rem;
 
   .logo {
+    margin-left: 10%;
     font-size: 4.4rem;
   }
 
@@ -92,6 +107,7 @@ header {
 }
 
 .logo {
+  text-transform: uppercase;
   display: flex;
   gap: 0;
 
@@ -119,4 +135,82 @@ nav {
       font-weight: 700;
     }
   }
+}
+
+/* Section Hero */
+section {
+  padding: 3.6rem 0 7.2rem 0;
+}
+
+.section-hero {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero {
+  max-width: 130rem;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  gap: 10rem;
+
+  .hero-img {
+    display: flex;
+    position: relative;
+
+    & img {
+      z-index: 3;
+    }
+
+    & svg {
+      top: 50%;
+      position: absolute;
+      z-index: 1;
+      transform: rotate(-10deg);
+    }
+
+    & svg:nth-child(2) {
+      top: 40%;
+      right: 5rem;
+      transform: rotate(12deg);
+    }
+  }
+
+  .hero-text {
+    .logo {
+      font-size: 12rem;
+    }
+
+    .hero-description {
+      margin: 2rem 0;
+      & h1 {
+        margin-bottom: 2rem;
+        line-height: normal;
+        font-weight: 450;
+        font-size: 4.8rem;
+        background: linear-gradient(90deg, #111 -8.85%, #b1b1b1 116.12%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      font-size: 2rem;
+    }
+
+    &::after {
+      display: block;
+      content: "";
+      width: 100%;
+      height: 18rem;
+    }
+  }
+}
+
+.btn-cta {
+  background-color: var(--theme-green);
+  color: var(--bgcolor);
+  padding: 1rem 4rem;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
