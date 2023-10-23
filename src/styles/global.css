@@ -7,7 +7,8 @@
 
 @font-face {
   font-family: "Futura";
-  src: url("/src/fonts/futura_medium_bt-webfont.woff2") format("woff2");
+  src: url("/src/fonts/FuturaPT-Medium.woff2") format("woff2"),
+    url("/src/fonts/FuturaPT-Medium.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
