@@ -89,6 +89,14 @@ h6 {
   overflow-wrap: break-word;
 }
 
+h1 {
+  font-size: 12rem;
+}
+
+h2 {
+  font-size: 4.8rem;
+}
+
 a {
   text-decoration: inherit;
   color: inherit;
@@ -105,15 +113,61 @@ button {
 /* === Global styles === */
 
 ::selection {
-  background-color: var(--theme-red);
+  background: rgba(
+    172,
+    72,
+    68,
+    0.5
+  ); /* ! BUG: Becasue of `background-clip: text` used on some elements, 1.0 opacity cannot be used. Otherwise text will be invisible!  */
   color: var(--fontcolor);
+}
+
+/* === Utility Variables === */
+
+.gradient-text {
+  background: linear-gradient(90deg, #111 -8.85%, #b1b1b1 116.12%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* === Element styles === */
 
+strong {
+  font-weight: 500; /* normal weight */
+}
+
+/* Sections */
+
+main {
+  & section:first-child {
+    padding-top: 12.2rem;
+  }
+}
+
+section {
+  max-width: 100%;
+  padding: 3.6rem 0 7.2rem 0;
+}
+
+section > div {
+  max-width: 130rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Lines (HR) */
+
+.small-hr {
+  width: 12.6rem;
+  border: 1px solid currentColor;
+  max-height: max-content;
+}
+
 /* Header */
 
-header {
+.header-main {
   z-index: 100;
   background-color: var(--bgcolor);
   position: fixed;
@@ -133,6 +187,27 @@ header {
   text-transform: uppercase;
 
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  & nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    & ul {
+      display: flex;
+      justify-content: center;
+      gap: 2.4rem;
+      font-size: 1.6rem;
+    }
+
+    & li {
+      list-style-type: none;
+
+      &:last-child {
+        font-weight: bold;
+      }
+    }
+  }
 }
 
 .header-placeholder {
@@ -141,25 +216,19 @@ header {
   width: 100%;
 }
 
-nav {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+.header-underline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 
-  & ul {
-    display: flex;
-    justify-content: center;
-    gap: 2.4rem;
-    font-size: 1.6rem;
+  & h2,
+  h3,
+  h4 {
+    font-weight: 450;
   }
-
-  & li {
-    list-style-type: none;
-
-    &:last-child {
-      font-weight: 700;
-    }
-  }
+  margin-bottom: 9.2rem;
 }
 
 /* Logo */
@@ -174,17 +243,7 @@ nav {
   }
 }
 
-main {
-  & section:first-child {
-    padding-top: 12.2rem;
-  }
-}
-
 /* Section Hero */
-section {
-  max-width: 100%;
-  padding: 3.6rem 0 7.2rem 0;
-}
 
 .section-hero {
   display: flex;
@@ -199,7 +258,6 @@ section {
 }
 
 .hero {
-  max-width: 130rem;
   display: grid;
   grid-template-columns: max-content 1fr;
   align-items: center;
@@ -229,20 +287,16 @@ section {
 
   .hero-text {
     .logo {
-      font-size: 12rem;
+      font-weight: normal;
     }
 
     .hero-description {
       margin: 2rem 0;
-      & h1 {
+      & h2 {
         margin-bottom: 2rem;
         line-height: normal;
-        font-weight: 450;
+        font-weight: normal;
         font-size: 4.8rem;
-        background: linear-gradient(90deg, #111 -8.85%, #b1b1b1 116.12%);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
       }
       font-size: 2rem;
     }
@@ -266,3 +320,36 @@ section {
 }
 
 /* Section The Why */
+
+.section-why {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  & h2 {
+    font-size: 4.8rem;
+    text-align: center;
+  }
+
+  & h3 {
+    width: max-content;
+    font-size: 3.1rem;
+  }
+}
+
+.why-reasons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20.6rem;
+}
+
+.why-reason {
+  text-align: center;
+  font-size: 2rem;
+
+  & header {
+    margin-bottom: 3rem;
+  }
+}
