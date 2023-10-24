@@ -397,21 +397,59 @@ section > div {
   gap: 20.6rem;
 
   & .image-container {
+    position: relative;
     display: flex;
     gap: 2rem;
     width: 36rem;
     max-width: 90%;
     height: 100%;
 
+    & svg {
+      position: absolute;
+      z-index: 1;
+    }
+
     & img {
       border-radius: 0.8rem;
       height: 29rem;
       object-fit: cover;
       object-position: center;
+      z-index: 2;
 
       .two-imgs > & {
         max-width: 50%;
       }
     }
+  }
+}
+
+.image-container-1 {
+  & svg:nth-child(1) {
+    left: -7rem;
+    bottom: 0;
+  }
+  & svg:nth-child(2) {
+    right: -6rem;
+    top: 20%;
+  }
+}
+.image-container-2 {
+  & svg:nth-child(1) {
+    left: -7rem;
+    bottom: 0;
+  }
+  & svg:nth-child(2) {
+    right: -4rem;
+    top: 25%;
+  }
+}
+.image-container-3 {
+  & svg:nth-child(1) {
+    left: -8rem;
+    top: 15%;
+  }
+  & svg:nth-child(2) {
+    right: -2rem;
+    top: 25%;
   }
 }
