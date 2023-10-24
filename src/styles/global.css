@@ -151,7 +151,7 @@ section {
 }
 
 section > div {
-  max-width: 130rem;
+  margin: 0 18.7rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -261,7 +261,7 @@ section > div {
   display: grid;
   grid-template-columns: max-content 1fr;
   align-items: center;
-  gap: 10rem;
+  gap: 18rem;
 
   .hero-img {
     display: flex;
@@ -339,15 +339,71 @@ section > div {
 }
 
 .why-reasons {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 20.6rem;
+  gap: 16rem;
 }
 
 .why-reason {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   font-size: 2rem;
+  gap: 5rem;
+
+  & p {
+    width: 41rem; /* ? In my opinion this should be auto, but template made in figma says it has to be fixed (hard-coded) value */
+  }
+
+  & ol {
+    position: relative;
+    list-style: none;
+    counter-reset: item;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    & li {
+      counter-increment: item;
+      text-align: left;
+
+      &::before {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 2rem;
+        font-weight: bold;
+        padding: 1rem 1.7rem;
+        content: counter(item);
+        border-radius: 4.2rem;
+        background: #fff;
+        box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.25);
+        color: var(--fontcolor);
+        text-align: center;
+      }
+    }
+  }
+
+  & .image-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 90%;
+    height: 100%;
+
+    & img {
+      border-radius: 0.8rem;
+      height: 29rem;
+      object-fit: cover;
+      object-position: center;
+
+      .two-imgs > & {
+        max-width: 50%;
+      }
+    }
+  }
 
   & header {
     margin-bottom: 3rem;
