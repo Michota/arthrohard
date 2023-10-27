@@ -466,6 +466,9 @@ section > div {
 /* Section Ingredients  */
 
 .section-ingredients {
+  padding: 3.6rem 0 0 0;
+  overflow: hidden;
+
   background-color: #fff;
 
   & > h3 {
@@ -545,13 +548,21 @@ section > div {
   position: relative;
 
   & img {
+    bottom: -2.4rem;
+    position: relative;
     object-fit: cover;
   }
   & svg {
     position: absolute;
   }
 
+  & svg:nth-child(1) {
+    bottom: -20%;
+    left: 14%;
+  }
+
   & svg:nth-child(2) {
-    bottom: -30%;
+    bottom: -10%;
+    right: 7%;
   }
 }
