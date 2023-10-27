@@ -40,6 +40,7 @@
   --theme-red: #ad4844;
   --theme-green: #30ab4c;
   --theme-gray: #d9d9d9;
+  --theme-darkgray: #bebebe;
 }
 
 /* Global Reset */
@@ -110,6 +111,7 @@ button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  user-select: none;
 }
 
 /* ========== Actual styling below ==========  */
@@ -564,5 +566,68 @@ section > div {
   & svg:nth-child(2) {
     bottom: -10%;
     right: 7%;
+  }
+}
+
+/* Section Products */
+
+.section-products {
+  margin-top: 12rem;
+}
+
+.product-quantity {
+  font-size: 2rem;
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: max-content;
+  display: flex;
+  outline: 1px solid var(--theme-red);
+
+  & > span {
+    font-weight: 450;
+
+    padding: 0 1rem;
+  }
+}
+
+.product-quantity-box {
+  user-select: none;
+  cursor: pointer;
+  color: var(--bgcolor);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 4rem;
+  background-color: var(--theme-red);
+
+  & svg {
+    stroke: var(--bgcolor);
+    stroke-width: 2;
+  }
+}
+
+.products {
+  margin-top: 12rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 3.5rem;
+  column-gap: 5rem;
+}
+
+.product-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15.5rem;
+  aspect-ratio: 1/1;
+  gap: 1rem;
+  background-color: #bebebe;
+
+  & > span {
+    width: max-content;
+    font-size: 3.1rem;
+    font-weight: 450;
   }
 }
