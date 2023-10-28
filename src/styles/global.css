@@ -617,10 +617,13 @@ section > div {
 
 .products {
   margin-top: 56rem; /* ! BUG: padding is ignored by scroll, so to make elements fully visible, it has to have own margin-top */
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   row-gap: 3.5rem;
   column-gap: 5rem;
+  flex-wrap: wrap;
 }
 
 .product-box {
