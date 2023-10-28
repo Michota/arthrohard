@@ -1,22 +1,20 @@
+import { fetchData } from "./fetchData";
 import "./styles/global.css";
 
-const api_link = "https://brandstestowy.smallhost.pl/api/random";
-let pageNumber = 1;
-const pageSize = 4;
+const sectionProducts = document.querySelector(".section-products");
+const productsContainer = sectionProducts.querySelector(".products-container");
 
-async function fetchData() {
-  const parameters = `pageNumber=${pageNumber}&pageSize=${pageSize}`;
-  const response = await fetch(`${api_link}?${parameters}`).then((res) =>
-    res.json()
-  );
-  pageNumber++;
-  return response;
-}
+// btn.addEventListener("click", () => {
+//   console.log(getLastItem());
+// });
 
-async function loadContent(containerElement) {
+let wasIntersected = false;
+
+const getLastItem = () =>
+  productsContainer.querySelector(".product-box:last-child");
+
+async function renderProducts(containerElement) {
   const { data } = await fetchData();
-  console.log(data);
-
   data.forEach(function (productData) {
     const productBox = document.createElement("div");
     productBox.className = "product-box";
@@ -27,42 +25,34 @@ async function loadContent(containerElement) {
   });
 }
 
-const sectionProducts = document.querySelector(".section-products");
-const products = sectionProducts.querySelector(".products");
+// Lazy-Load first data
+async function lazyLoadProducts(payload) {
+  const { isIntersecting } = payload[0];
+  if (isIntersecting) {
+    if (!wasIntersected) {
+      await renderProducts(productsContainer);
+      observeLastItem();
+    }
+    wasIntersected = true;
+  }
+}
 
-// const options = {
-//   root: null,
-//   rootMargin: "0px",
-//   threshold: 0.2,
-// };
+const sectionObserver = new IntersectionObserver(lazyLoadProducts);
+sectionObserver.observe(sectionProducts);
 
-// const callback = (entries, observer) => {
-//   entries.forEach((entry) => {
-//     if (entry.isIntersecting) {
-//       // Sprawdź, czy użytkownik jest blisko końca listy produktów
-//       try {
-//         const lastProduct = products.lastElementChild;
-//         const lastProductBottom = lastProduct.getBoundingClientRect().bottom;
-//         const sectionProductsBottom = entry.boundingClientRect.bottom;
+// Observe last element
 
-//         if (lastProductBottom <= sectionProductsBottom) {
-//           loadContent(products);
-//           // Kontynuuj obserwację, aby umożliwić nieskończone ładowanie
-//           observer.observe(lastProduct);
-//         }
-//         // ... reszta kodu ...
-//       } catch (error) {
-//         console.error("Wystąpił błąd:", error);
-//       }
-//     }
-//   });
-// };
+// Load new data when last item was seen by user
+async function renderNewData(payload) {
+  const { isIntersecting } = payload[0];
+  if (isIntersecting) {
+    await renderProducts(productsContainer);
+    observeLastItem();
+  }
+}
 
-// const sectionObserver = new IntersectionObserver(callback, options);
-// sectionObserver.observe(products)
-const btn = document.querySelector("#click");
-btn.addEventListener("click", () => {
-  loadContent(products);
-});
+const lastItemObserver = new IntersectionObserver(renderNewData);
 
-loadContent(products);
+function observeLastItem() {
+  lastItemObserver.observe(getLastItem());
+}
