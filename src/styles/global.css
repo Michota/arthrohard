@@ -616,6 +616,7 @@ section > div {
 }
 
 .product-box {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -625,14 +626,15 @@ section > div {
   background-color: #bebebe;
 
   & > span {
-    width: max-content;
+    text-align: center;
+    min-width: 10rem;
     font-size: 3.1rem;
     font-weight: 450;
   }
 }
 
 .products-container {
-  width: 95%;
+  width: 98%;
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
