@@ -3,31 +3,63 @@ import { settings } from "./services/fetchSettings";
 import "./styles/global.css";
 import { renderProducts } from "./utilities/renderProducts";
 
+/* Selecting Elements */
+const navbar = document.querySelector(".navbar");
 const selectQuantityEl = document.querySelector(".product-quantity-box");
-const sectionProducts = document.querySelector(".section-products");
-const productsContainer = sectionProducts.querySelector(".products-container");
+// const sectionWhyEl = document.querySelector(".section-why");
+// const sectionIngredientsEl = document.querySelector(".section-ingredients");
+const sections = document.querySelectorAll("section");
+const sectionProductsEl = document.querySelector(".section-products");
+const productsContainerEl = sectionProductsEl.querySelector(
+  ".products-container"
+);
+
+/* === NAVIGATION === */
+function changeActiveNavLink(section) {
+  const links = navbar.querySelectorAll("li");
+  const linkToBeActivated = Array.from(links).find(
+    (link) => link.dataset.section === section.id
+  );
+
+  links.forEach((link) => link.classList.remove("active"));
+
+  linkToBeActivated.classList.add("active");
+}
+
+function handleIntersections(payload) {
+  const { isIntersecting, target } = payload[0];
+  if (isIntersecting) changeActiveNavLink(target);
+}
+
+sections.forEach((section) => {
+  if (!section.id) return;
+  const sectionObserver = new IntersectionObserver(handleIntersections);
+  sectionObserver.observe(section);
+});
+
+/* === PRODUCTS === */
+const sectionObserver = new IntersectionObserver(lazyLoadProducts);
+sectionObserver.observe(sectionProductsEl);
 
 let wasIntersected = false;
 
 // Lazy-Load first data
+
 async function lazyLoadProducts(payload) {
   const { isIntersecting } = payload[0];
   if (isIntersecting) {
     if (!wasIntersected) {
-      await renderProducts(productsContainer);
+      await renderProducts(productsContainerEl);
       observeLastItem();
     }
     wasIntersected = true;
   }
 }
 
-const sectionObserver = new IntersectionObserver(lazyLoadProducts);
-sectionObserver.observe(sectionProducts);
-
 // Observe last element in container
 
 const getLastItem = () =>
-  productsContainer.querySelector(".product-box:last-child");
+  productsContainerEl.querySelector(".product-box:last-child");
 
 function observeLastItem() {
   lastItemObserver.observe(getLastItem());
@@ -38,7 +70,7 @@ function observeLastItem() {
 async function infiniteLoader(payload) {
   const { isIntersecting } = payload[0];
   if (isIntersecting) {
-    await renderProducts(productsContainer);
+    await renderProducts(productsContainerEl);
     observeLastItem();
   }
 }
@@ -46,7 +78,7 @@ const lastItemObserver = new IntersectionObserver(infiniteLoader);
 
 // Listen to click to product-box
 
-productsContainer.addEventListener("click", (e) => {
+productsContainerEl.addEventListener("click", (e) => {
   e.preventDefault();
   if (!e.target.classList.contains("product-box")) return;
   renderPopup(

@@ -13,18 +13,11 @@
 
 <body>
 
-  <!-- <div class="popup-background">
-    <div class="popup-window">
-      <div>ID: <span class="id_number">1</span></div>
-      <div>Nazwa: <span class="id_number">XyzABC</span></div>
-      <div>Wartość: <span>Jakas wartosc</span></div>
-      <button class="close-popup">x</button>
-    </div>
-  </div> -->
+
 
   <script defer type="module" src="/src/main.js"></script>
   <!-- Header -->
-  <header class="header-main">
+  <header class="navbar">
     <div class="logo">
       <span>Artho</span>
       <span>hard</span>
@@ -32,9 +25,9 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#">Co nas wyróżnia</a></li>
-        <li><a href="#">Skład</a></li>
-        <li><a href="#">Produkty</a></li>
+        <li data-section="section-why"><a href="#section-why">Co nas wyróżnia</a></li>
+        <li data-section="section-ingredients"><a href="#section-ingredients">Skład</a></li>
+        <li data-section="section-products"><a href="#section-products">Produkty</a></li>
       </ul>
     </nav>
   </header>
@@ -137,7 +130,7 @@
       </svg>
     </section>
     <!-- The Why Section -->
-    <section class="section-why">
+    <section id="section-why" class="section-why">
       <header class="header-underline">
         <h2 class="gradient-text">Co wyróżnia nasz preparat</h2>
         <hr class="small-hr" />
@@ -326,7 +319,7 @@
       </div>
     </section>
     <!-- Ingredients Section -->
-    <section class="section-ingredients">
+    <section id="section-ingredients" class="section-ingredients">
       <header class="header-underline">
         <h2 class="gradient-text">Skład w 5 ml</h2>
         <hr class="small-hr" />
@@ -512,7 +505,7 @@
 
 
 
-    <section class="section-products">
+    <section id="section-products" class="section-products">
       <div class="product-quantity">
         <span>liczba produktów na stronie</span>
         <div class="select-div">

@@ -48,6 +48,7 @@
 html {
   font-size: 62.5%;
   font-family: "Futura", sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -146,6 +147,19 @@ h3 {
   -webkit-text-fill-color: transparent;
 }
 
+.active {
+  position: relative;
+}
+
+.active::after {
+  width: 100%;
+  bottom: -0.7rem;
+  left: 0;
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid var(--fontcolor);
+}
+
 /* === Element styles === */
 
 strong {
@@ -182,7 +196,7 @@ section > div {
 
 /* Header */
 
-.header-main {
+.navbar {
   z-index: 100;
   background-color: var(--bgcolor);
   position: fixed;
