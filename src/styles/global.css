@@ -616,6 +616,7 @@ section > div {
 }
 
 .products {
+  margin-top: 56rem; /* ! BUG: padding is ignored by scroll, so to make elements fully visible, it has to have own margin-top */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 3.5rem;
