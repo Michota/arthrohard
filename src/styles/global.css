@@ -47,7 +47,7 @@
 
 html {
   font-size: 62.5%;
-  font-family: "Futura";
+  font-family: "Futura", sans-serif;
 }
 
 body {
@@ -642,6 +642,18 @@ section > div {
   }
 }
 
+.select-div {
+  position: relative;
+  display: flex;
+}
+
+.select-arrow {
+  position: absolute;
+  top: 40%;
+  right: 5%;
+  transform: translate(-50%, -5%);
+}
+
 .product-quantity-box {
   user-select: none;
   cursor: pointer;
@@ -653,11 +665,33 @@ section > div {
   gap: 1rem;
   padding: 1rem 4rem;
   background-color: var(--theme-red);
+  font-family: "Futura";
+  font-weight: bold;
 
   & svg {
     stroke: var(--bgcolor);
     stroke-width: 2;
   }
+
+  /* Disable default appeareance */
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  &:focus,
+  &:focus-visible,
+  &:active {
+    outline: none;
+  }
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+.select-div option {
+  font-family: "Futura";
+  font-weight: bold;
 }
 
 .product-box {

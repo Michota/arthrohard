@@ -1,7 +1,9 @@
 import { savedData as productsData } from "./services/fetchData";
+import { settings } from "./services/fetchSettings";
 import "./styles/global.css";
 import { renderProducts } from "./utilities/renderProducts";
 
+const selectQuantityEl = document.querySelector(".product-quantity-box");
 const sectionProducts = document.querySelector(".section-products");
 const productsContainer = sectionProducts.querySelector(".products-container");
 
@@ -71,3 +73,9 @@ function renderPopup(data) {
     popup.outerHTML = "";
   });
 }
+
+// Change Page Size
+selectQuantityEl.addEventListener("change", (e) => {
+  const newPageSize = Number(e.target.value);
+  settings.pageSize = newPageSize;
+});
