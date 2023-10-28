@@ -573,12 +573,19 @@ section > div {
 
 .section-products {
   margin-top: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12rem;
+
+  & > div {
+    margin: initial;
+  }
 }
 
 .product-quantity {
   font-size: 2rem;
-  margin-left: 50%;
-  transform: translate(-50%);
   width: max-content;
   display: flex;
   outline: 1px solid var(--theme-red);
@@ -609,7 +616,6 @@ section > div {
 }
 
 .products {
-  margin-top: 12rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 3.5rem;
@@ -630,4 +636,11 @@ section > div {
     font-size: 3.1rem;
     font-weight: 450;
   }
+}
+
+.products-container {
+  align-items: center;
+  width: 90%;
+  height: 62rem;
+  overflow-y: auto;
 }
