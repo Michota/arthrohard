@@ -588,13 +588,31 @@ section > div {
 }
 
 .ingredient-text {
+  min-height: 41rem;
   &.text-block {
     gap: 2rem;
   }
 
-  /* & header > h3 {
-      margin-bottom: 2rem;
-    } */
+  & h3 {
+    position: relative;
+  }
+
+  &:hover h3::after {
+    opacity: 1;
+    margin-top: 2rem;
+
+    width: 100%;
+    height: 1px;
+    background-color: var(--fontcolor);
+  }
+
+  & h3::after {
+    content: "";
+    position: relative;
+    display: block;
+    transition: all 0.2s ease;
+    height: 0px;
+  }
 }
 
 .list-dot {
