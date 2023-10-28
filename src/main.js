@@ -1,3 +1,4 @@
+import { savedData as productsData } from "./services/fetchData";
 import "./styles/global.css";
 import { renderProducts } from "./utilities/renderProducts";
 
@@ -40,3 +41,33 @@ async function infiniteLoader(payload) {
   }
 }
 const lastItemObserver = new IntersectionObserver(infiniteLoader);
+
+// Listen to click to product-box
+
+productsContainer.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (!e.target.classList.contains("product-box")) return;
+  renderPopup(
+    productsData.find((product) => product.id === Number(e.target.dataset.id))
+  );
+});
+
+function renderPopup(data) {
+  const markup = `
+  <div class="popup">
+    <div class="popup-window">
+      <div>ID: <span class="id_number">${data.id}</span></div>
+      <div>Nazwa: <span class="id_name">${data.name}</span></div>
+      <div>Wartość: <span>${data.value}</span></div>
+      <button class="close-popup">x</button>
+    </div>
+  </div>
+  `;
+  document.body.insertAdjacentHTML("afterbegin", markup);
+
+  const closeButton = document.querySelector(".close-popup");
+  const popup = document.querySelector(".popup");
+  closeButton.addEventListener("click", function () {
+    popup.outerHTML = "";
+  });
+}
