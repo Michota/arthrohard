@@ -420,15 +420,19 @@ section > div {
 }
 
 .why-reasons {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
+  display: flex;
   align-items: start;
   column-gap: 20rem;
   row-gap: 5rem;
 }
 
 .why-reason {
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: end;
+  min-height: 100%;
+
   & ol {
     position: relative;
     list-style: none;
@@ -500,6 +504,8 @@ section > div {
   }
 }
 .image-container-2 {
+  align-items: self-end;
+
   & svg:nth-child(1) {
     left: -7rem;
     bottom: 0;
