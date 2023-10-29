@@ -186,6 +186,38 @@ section > div {
   align-items: center;
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 1.6rem;
+  height: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--theme-darkgray);
+}
+
+div::-webkit-scrollbar-track {
+  margin-block: 2rem;
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--theme-red);
+  border-radius: 1rem;
+  border: 0.2em var(--theme-darkgray) solid;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--theme-gray);
+}
+
+@supports (scrollbar-color: var(--theme-darkgray) var(--theme-red)) {
+  * {
+    scrollbar-color: var(--theme-red) var(--theme-darkgray);
+    scrollbar-width: auto;
+  }
+}
+
 /* Lines (HR) */
 
 .small-hr {
