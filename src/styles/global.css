@@ -420,9 +420,12 @@ section > div {
 }
 
 .why-reasons {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 20rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: start;
+  column-gap: 20rem;
+  row-gap: 5rem;
 }
 
 .why-reason {
@@ -460,35 +463,28 @@ section > div {
   }
 }
 
-.why-images {
-  margin-top: 5rem;
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 20.6rem;
+.image-container {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  width: 36rem;
+  max-width: 90%;
+  height: 100%;
 
-  & .image-container {
-    position: relative;
-    display: flex;
-    gap: 2rem;
-    width: 36rem;
-    max-width: 90%;
-    height: 100%;
+  & svg {
+    position: absolute;
+    z-index: 1;
+  }
 
-    & svg {
-      position: absolute;
-      z-index: 1;
-    }
+  & img {
+    border-radius: 0.8rem;
+    height: 29rem;
+    object-fit: cover;
+    object-position: center;
+    z-index: 2;
 
-    & img {
-      border-radius: 0.8rem;
-      height: 29rem;
-      object-fit: cover;
-      object-position: center;
-      z-index: 2;
-
-      .two-imgs > & {
-        max-width: 50%;
-      }
+    .two-imgs > & {
+      max-width: 50%;
     }
   }
 }
