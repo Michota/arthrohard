@@ -432,6 +432,7 @@ section > div {
   flex-direction: column;
   justify-content: end;
   min-height: 100%;
+  position: relative;
 
   & ol {
     position: relative;
@@ -462,6 +463,23 @@ section > div {
     }
   }
 
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2.4rem;
+    width: 0%;
+    height: 1px;
+    border-bottom: 0px var(--fontcolor) solid;
+    opacity: 0;
+    transition: all 200ms;
+  }
+
+  &:hover::after {
+    width: 100%;
+    opacity: 1;
+    border-bottom: 1px var(--fontcolor) solid;
+  }
+
   & header {
     margin-bottom: 0;
   }
@@ -470,6 +488,9 @@ section > div {
 .image-container {
   position: relative;
   display: flex;
+  align-items: self-end;
+
+  justify-content: center;
   gap: 2rem;
   width: 36rem;
   max-width: 90%;
@@ -504,8 +525,6 @@ section > div {
   }
 }
 .image-container-2 {
-  align-items: self-end;
-
   & svg:nth-child(1) {
     left: -7rem;
     bottom: 0;
