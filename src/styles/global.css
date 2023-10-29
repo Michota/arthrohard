@@ -175,7 +175,6 @@ main {
 }
 
 section {
-  max-width: 100vw;
   padding: 3.6rem 0 7.2rem 0;
 }
 
@@ -371,6 +370,7 @@ div::-webkit-scrollbar-track {
     position: absolute;
     right: 0;
     bottom: -3rem;
+    z-index: -1;
   }
 }
 
@@ -391,7 +391,6 @@ div::-webkit-scrollbar-track {
     & svg {
       top: 50%;
       position: absolute;
-      z-index: 1;
       transform: rotate(-10deg);
     }
 
@@ -580,6 +579,10 @@ div::-webkit-scrollbar-track {
 /* Section Ingredients  */
 
 .section-ingredients {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 3.6rem 0 0 0;
   overflow: hidden;
 
@@ -587,8 +590,6 @@ div::-webkit-scrollbar-track {
 
   & > h3 {
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
     margin-bottom: 8.4rem;
   }
 
@@ -606,9 +607,10 @@ div::-webkit-scrollbar-track {
   grid-column: 2;
 
   & img {
-    height: 100%;
+    position: relative;
     object-fit: cover;
-    scale: 1.05;
+    height: 100%;
+    z-index: 3;
   }
 
   & svg {
@@ -629,6 +631,7 @@ div::-webkit-scrollbar-track {
     bottom: 7rem;
     position: relative;
     background-color: var(--theme-red);
+    z-index: 5;
   }
 }
 
@@ -682,10 +685,11 @@ div::-webkit-scrollbar-track {
   & img {
     bottom: -2.4rem;
     position: relative;
-    object-fit: cover;
   }
   & svg {
+    width: 30%;
     position: absolute;
+    height: min-content;
   }
 
   & svg:nth-child(1) {
@@ -703,6 +707,7 @@ div::-webkit-scrollbar-track {
 
 .section-products {
   margin-top: 12rem;
+  padding-top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -808,4 +813,279 @@ div::-webkit-scrollbar-track {
   row-gap: 3.5rem;
   column-gap: 5rem;
   overflow-y: auto;
+}
+
+/* RWD */
+
+@media screen and (max-width: 1600px) {
+  .why-reasons {
+    column-gap: 10rem;
+  }
+
+  .photo-column {
+    width: 50rem;
+  }
+
+  .hero-description {
+    & p {
+      max-width: 60rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1520px) {
+  .hero {
+    gap: 10rem;
+  }
+}
+
+@media screen and (max-width: 1475px) {
+  .hero-text {
+    & .logo {
+      font-size: 10rem;
+    }
+
+    & h2 {
+      font-size: 3.6rem;
+      /* text-align: right; */
+    }
+  }
+
+  .ingredients-list {
+    column-gap: 3rem;
+  }
+
+  .product-box {
+    padding: 10rem;
+  }
+
+  .dog-image-container {
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .ingredients-list {
+    margin: 0;
+    width: 90%;
+    column-gap: 0;
+    grid-template-columns: 1fr min-content 1fr;
+  }
+
+  .photo-column {
+    width: 50rem;
+
+    & img {
+      object-fit: scale-down;
+    }
+  }
+
+  .ingredient-text {
+    & p {
+      max-width: 45rem;
+      top: 0;
+    }
+  }
+
+  .why-reason {
+    & p {
+      width: fit-content;
+    }
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .photo-column {
+    width: 20rem;
+    height: max-content;
+
+    & svg {
+      width: 10rem;
+    }
+
+    & svg:nth-child(1) {
+      right: 0;
+      top: 25%;
+    }
+    & svg:nth-child(2) {
+      top: 0;
+      left: -1.2rem;
+      transform: rotate(-1deg);
+    }
+
+    & .btn-cta {
+      top: 0.6rem;
+      padding: 0.8rem 1.6rem;
+      font-size: 1.6rem;
+    }
+  }
+
+  .ingredient-text p {
+    max-width: 35rem;
+  }
+
+  .why-reasons {
+    width: 20rem;
+    column-gap: 2rem;
+  }
+
+  .hero-text .logo {
+    font-size: 8rem;
+  }
+
+  .hero {
+    width: 80%;
+  }
+
+  .section-ingredients {
+    position: relative;
+  }
+
+  .dog-image-container {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 1125px) {
+  .why-reasons {
+    margin: 0;
+    column-gap: 0;
+  }
+
+  .hero {
+    gap: 0;
+
+    .hero-img {
+      width: 60rem;
+    }
+
+    .hero-text {
+      .logo {
+        font-size: 5rem;
+      }
+
+      & .hero-description h2 {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  .navbar {
+    height: 7rem;
+
+    & nav {
+      left: initial;
+      right: 0;
+    }
+  }
+
+  .ingredients-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .photo-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 40rem;
+
+    & .btn-cta {
+      width: max-content;
+      height: max-content;
+    }
+
+    & svg:nth-child(1) {
+      left: 20%;
+      top: 0;
+    }
+    & svg:nth-child(2) {
+      display: none;
+    }
+  }
+
+  .dog-image-container {
+    position: absolute;
+    width: 65rem;
+    margin: 0;
+    right: 0;
+    opacity: 0.4;
+  }
+
+  .header-underline {
+    margin-bottom: 6rem;
+  }
+
+  .why-reasons {
+    width: 100%;
+  }
+  .why-reason {
+    width: 33%;
+
+    & img {
+      height: 20rem;
+    }
+
+    & p {
+      width: 90%;
+    }
+
+    & ol {
+      & li {
+        &::before {
+          margin-right: 2rem;
+          padding: 0.5rem 1.1rem;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    & h3 {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero {
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+
+    & .hero-text {
+      &::after {
+        display: none;
+      }
+    }
+
+    .hero-img {
+      width: 35rem;
+
+      & svg {
+        height: min-content;
+        width: 10rem;
+
+        & svg:nth-child(2) {
+          top: 20%;
+          right: 3rem;
+          transform: rotate(12deg);
+        }
+      }
+    }
+  }
+
+  .section-why {
+    & h2 {
+      font-size: 3.6rem;
+      text-align: center;
+    }
+  }
 }
