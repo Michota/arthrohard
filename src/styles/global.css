@@ -747,7 +747,7 @@ section > div {
 
 .products-container {
   width: 98%;
-  height: 100vh;
+  height: 50rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
