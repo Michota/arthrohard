@@ -33,7 +33,7 @@ function handleIntersections(payload) {
 sections.forEach((section) => {
   if (!section.id) return;
   const sectionObserver = new IntersectionObserver(handleIntersections, {
-    threshold: 0.2,
+    threshold: 0.3,
   });
   sectionObserver.observe(section);
 });
@@ -115,14 +115,14 @@ selectQuantityEl.addEventListener("change", (e) => {
 
 // Handle Hamburger Menu
 
-function hamburgerToggle(btn) {
-  btn.classList.toggle("isActive");
+function hamburgerToggle() {
+  hamburgerMenuEl.classList.toggle("isActive");
   navbar.classList.toggle("isActive");
   document.body.style.overflow =
     document.body.style.overflow === "hidden" ? "" : "hidden";
 }
 
-hamburgerMenuEl.addEventListener("click", (e) => hamburgerToggle(e.target));
+hamburgerMenuEl.addEventListener("click", (e) => hamburgerToggle());
 Array.from(navbar.querySelectorAll("li")).forEach((link) =>
-  link.addEventListener("click", (e) => hamburgerToggle(e.target))
+  link.addEventListener("click", (e) => hamburgerToggle())
 );
