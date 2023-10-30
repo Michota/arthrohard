@@ -6,8 +6,7 @@ import { renderProducts } from "./utilities/renderProducts";
 /* Selecting Elements */
 const navbar = document.querySelector(".navbar");
 const selectQuantityEl = document.querySelector(".product-quantity-box");
-// const sectionWhyEl = document.querySelector(".section-why");
-// const sectionIngredientsEl = document.querySelector(".section-ingredients");
+const hamburgerMenuEl = document.querySelector(".hamburger-menu");
 const sections = document.querySelectorAll("section");
 const sectionProductsEl = document.querySelector(".section-products");
 const productsContainerEl = sectionProductsEl.querySelector(
@@ -33,7 +32,9 @@ function handleIntersections(payload) {
 
 sections.forEach((section) => {
   if (!section.id) return;
-  const sectionObserver = new IntersectionObserver(handleIntersections);
+  const sectionObserver = new IntersectionObserver(handleIntersections, {
+    threshold: 0.2,
+  });
   sectionObserver.observe(section);
 });
 
@@ -113,10 +114,15 @@ selectQuantityEl.addEventListener("change", (e) => {
 });
 
 // Handle Hamburger Menu
-const hamburgerMenuEl = document.querySelector(".hamburger-menu");
 
 function hamburgerToggle(btn) {
   btn.classList.toggle("isActive");
+  navbar.classList.toggle("isActive");
+  document.body.style.overflow =
+    document.body.style.overflow === "hidden" ? "" : "hidden";
 }
 
 hamburgerMenuEl.addEventListener("click", (e) => hamburgerToggle(e.target));
+Array.from(navbar.querySelectorAll("li")).forEach((link) =>
+  link.addEventListener("click", (e) => hamburgerToggle(e.target))
+);

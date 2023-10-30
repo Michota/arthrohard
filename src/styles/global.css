@@ -1134,15 +1134,55 @@ div::-webkit-scrollbar-track {
       text-align: center;
     }
   }
+  .hamburger-menu {
+    position: relative;
+    display: inline-block;
+    position: absolute;
+    top: 1.6rem;
+    left: 1.6rem;
+  }
 
   .navbar {
     .logo,
     nav {
-      display: none;
+      opacity: 0;
+      width: 1px;
     }
+
+    transition: all 200ms;
   }
 
-  .hamburger-menu {
-    display: inline-block;
+  .navbar.isActive {
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+
+    .logo,
+    nav {
+      opacity: 1;
+      width: max-content;
+      display: block;
+      position: static;
+    }
+
+    .logo {
+      margin-left: 0;
+      position: absolute;
+      top: 2.4rem;
+      font-size: 5rem;
+      font-weight: 450;
+    }
+
+    & nav {
+      all: unset;
+      & ul {
+        font-size: 3rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 }
