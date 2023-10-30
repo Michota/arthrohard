@@ -1242,6 +1242,7 @@ div::-webkit-scrollbar-track {
     flex-direction: column;
     justify-content: stretch;
     align-items: center;
+    gap: 12rem;
   }
 
   .why-reason {
@@ -1380,13 +1381,19 @@ div::-webkit-scrollbar-track {
 
 @media screen and (max-width: 500px) {
   .hero {
-    height: 50vh;
+    text-align: center;
+    margin: 0;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column-reverse;
+
+    .hero-img {
+      & svg {
+        width: 10rem;
+      }
+    }
 
     .hero-text {
-      width: max-content;
+      width: fit-content;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1394,6 +1401,10 @@ div::-webkit-scrollbar-track {
 
       & .hero-description h2 {
         font-size: 3rem;
+      }
+
+      p {
+        text-align: center;
       }
 
       .logo {
@@ -1406,13 +1417,53 @@ div::-webkit-scrollbar-track {
         transform: none;
       }
     }
+  }
 
-    .hero-img {
-      position: absolute;
-      z-index: -1;
-      img {
-        opacity: 0.1;
+  .section-ingredients {
+    & > h3 {
+      font-size: 2.7rem;
+      width: 70%;
+      text-align: center;
+    }
+  }
+
+  .dog-image-container {
+    width: 25rem;
+    right: -30%;
+  }
+
+  .photo-column {
+    width: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .product-quantity {
+    scale: 0.9;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .hero {
+    .hero-text {
+      .logo {
+        font-size: 4rem;
       }
     }
+  }
+
+  .product-quantity {
+    scale: 0.7;
+  }
+
+  .section-products {
+    margin: 3rem;
+    gap: 3rem;
+  }
+
+  .product-box {
+    padding: 1.2rem;
   }
 }
