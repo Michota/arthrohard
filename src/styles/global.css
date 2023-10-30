@@ -754,8 +754,7 @@ div::-webkit-scrollbar-track {
 /* Section Products */
 
 .section-products {
-  margin-top: 12rem;
-  padding-top: 0;
+  padding-top: 12rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1210,9 +1209,10 @@ div::-webkit-scrollbar-track {
     }
 
     .logo {
+      display: flex;
       margin-left: 0;
       position: absolute;
-      top: 2.4rem;
+      top: 7%;
       font-size: 5rem;
       font-weight: 450;
     }
@@ -1410,13 +1410,15 @@ div::-webkit-scrollbar-track {
       .logo {
         font-size: 6rem;
       }
-
-      .btn-cta {
-        position: static;
-        margin: 0;
-        transform: none;
-      }
     }
+  }
+
+  .hero .hero-text .btn-cta {
+    left: 0;
+    transform: translateX(0);
+    position: static;
+    margin: 0;
+    transform: none;
   }
 
   .section-ingredients {
@@ -1454,12 +1456,16 @@ div::-webkit-scrollbar-track {
     }
   }
 
+  .ingredient-text p {
+    max-width: 100%;
+  }
+
   .product-quantity {
     scale: 0.7;
   }
 
   .section-products {
-    margin: 3rem;
+    padding-top: 3rem;
     gap: 3rem;
   }
 
