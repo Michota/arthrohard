@@ -288,6 +288,10 @@ div::-webkit-scrollbar-track {
   h4 {
     font-weight: 450;
   }
+
+  h2 {
+    font-size: 4.8rem;
+  }
   margin-bottom: 13.5rem;
 }
 
@@ -474,7 +478,6 @@ div::-webkit-scrollbar-track {
   flex-direction: column;
 
   & h2 {
-    font-size: 4.8rem;
     text-align: center;
   }
 }
@@ -905,7 +908,6 @@ div::-webkit-scrollbar-track {
 
     & h2 {
       font-size: 3.6rem;
-      /* text-align: right; */
     }
   }
 
@@ -1131,6 +1133,12 @@ div::-webkit-scrollbar-track {
     overflow-x: hidden;
   }
 
+  .header-underline {
+    h2 {
+      font-size: 3.6rem;
+    }
+  }
+
   .hero {
     gap: 2rem;
     justify-content: center;
@@ -1159,9 +1167,12 @@ div::-webkit-scrollbar-track {
     }
   }
 
+  h2 {
+    font-size: 3.6rem;
+  }
+
   .section-why {
     & h2 {
-      font-size: 3.6rem;
       text-align: center;
     }
   }
@@ -1222,6 +1233,41 @@ div::-webkit-scrollbar-track {
   }
 }
 
+@media screen and (max-width: 835px) {
+  .ingredient-text {
+    text-align: center;
+  }
+
+  .why-reasons {
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+  }
+
+  .why-reason {
+    align-self: center;
+    width: 75%;
+    flex: 1;
+
+    &:hover::after {
+      width: 50%;
+    }
+
+    & h3 .first-word {
+      &::after {
+        margin-left: 0;
+        content: ":";
+      }
+    }
+  }
+
+  .ingredient-text {
+    h3 {
+      font-size: 2.4rem;
+    }
+  }
+}
+
 @media screen and (max-width: 700px) {
   .why-reasons {
     justify-content: center;
@@ -1237,7 +1283,7 @@ div::-webkit-scrollbar-track {
       width: 100%;
 
       &::after {
-        content: "-";
+        content: "";
       }
     }
   }
@@ -1261,14 +1307,112 @@ div::-webkit-scrollbar-track {
 }
 
 @media screen and (max-width: 670px) {
-  .hero {
-    gap: 7rem;
-    grid-template-columns: 25rem 1fr;
+  .section-hero {
+    min-height: 100vw;
   }
 
-  .why-reason {
-    &:hover::after {
-      width: 70%;
+  .hero {
+    padding: 0 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 2rem;
+    grid-template-columns: 60% 40%;
+
+    .hero-img {
+      img {
+        min-width: 25rem;
+      }
+
+      svg {
+        width: 5rem;
+      }
+
+      svg:nth-child(2) {
+        top: 20%;
+        right: 1rem;
+      }
+    }
+
+    .hero-text {
+      .logo {
+        font-size: 5rem;
+      }
+
+      & .hero-description h2 {
+        font-size: 2.6rem;
+        margin-bottom: 1rem;
+      }
+
+      .btn-cta {
+        margin-top: 2rem;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .product-box {
+      padding: 5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .section-why {
+    & h2 {
+      font-size: 3rem;
+    }
+  }
+
+  .hero {
+    .hero-text {
+      .logo {
+        font-size: 4rem;
+      }
+    }
+  }
+
+  .ingredient-text {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .hero {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .hero-text {
+      width: max-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      & .hero-description h2 {
+        font-size: 3rem;
+      }
+
+      .logo {
+        font-size: 6rem;
+      }
+
+      .btn-cta {
+        position: static;
+        margin: 0;
+        transform: none;
+      }
+    }
+
+    .hero-img {
+      position: absolute;
+      z-index: -1;
+      img {
+        opacity: 0.1;
+      }
     }
   }
 }
