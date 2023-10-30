@@ -111,3 +111,12 @@ selectQuantityEl.addEventListener("change", (e) => {
   const newPageSize = Number(e.target.value);
   settings.pageSize = newPageSize;
 });
+
+// Handle Hamburger Menu
+const hamburgerMenuEl = document.querySelector(".hamburger-menu");
+
+function hamburgerToggle(btn) {
+  btn.classList.toggle("isActive");
+}
+
+hamburgerMenuEl.addEventListener("click", (e) => hamburgerToggle(e.target));
