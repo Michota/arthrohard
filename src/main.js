@@ -1,6 +1,5 @@
 import { savedData as productsData } from "./services/fetchData";
 import { settings } from "./services/fetchSettings";
-import "./styles/global.css";
 import { renderProducts } from "./utilities/renderProducts";
 
 /* Selecting Elements */
